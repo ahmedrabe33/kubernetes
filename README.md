@@ -1,248 +1,76 @@
 # Kubernetes (K8s) — Practical Understanding & Hands-on Labs 🚀
 
+Welcome! In this repository, I will explain Kubernetes concepts in a simple and practical way, and provide all the hands-on labs to practice each topic. This is designed to help build a strong practical understanding and simulate real-world scenarios.
+
 ---
 
 ## 🔥 Why Kubernetes Exists (The Real Problem)
 
-Modern systems are no longer simple applications running on a single server.
+Modern applications are no longer simple programs running on a single server.  
 
-Today’s production environments include:
+Today’s production environments include:  
 
-* Microservices architectures
-* Distributed systems across multiple machines
-* Dynamic and unpredictable traffic
-* Strict requirements for high availability
+- **Microservices architectures** – each service runs independently  
+- **Distributed systems** – running across multiple machines  
+- **Dynamic and unpredictable traffic** – sudden spikes in usage  
+- **High availability requirements** – downtime is unacceptable  
 
-Managing this manually leads to serious challenges.
+Managing this manually leads to serious challenges.  
 
 ---
 
 ### ❌ Key Problems in Real Environments
 
-#### 1. Scaling is Inefficient
+1. **Inefficient Scaling**  
+   - Manual scaling is slow  
+   - Over-provisioning wastes resources  
+   - Under-provisioning causes downtime  
 
-Applications cannot automatically handle traffic spikes.
+2. **Lack of Self-Healing**  
+   - If a container crashes, it stays down unless manually restarted  
+   - Leads to service disruption and poor reliability  
 
-* Manual scaling is slow
-* Over-provisioning wastes resources
-* Under-provisioning causes downtime
+3. **Risky Deployments**  
+   - Updates can introduce failures  
+   - No safe rollout or automated rollback  
 
----
-
-#### 2. Lack of Self-Healing
-
-When a container crashes:
-
-* It stays down unless manually restarted
-
-This leads to:
-
-* Service disruption
-* Poor reliability
+4. **Infrastructure Complexity**  
+   - Managing containers across multiple nodes is hard  
+   - No centralized control  
+   - Troubleshooting is difficult  
 
 ---
 
-#### 3. Risky Deployments
+## 💡 How Kubernetes Solves These Problems
 
-Updating applications can introduce failures:
+Kubernetes provides automation and orchestration to handle these challenges:  
 
-* No safe rollout strategies
-* No automated rollback
+- **Automated Deployment & Scaling** – scale up/down automatically based on load  
+- **Self-Healing** – restarts crashed Pods to maintain desired state  
+- **Rolling Updates & Rollbacks** – update apps without downtime; rollback if needed  
+- **Load Balancing & Service Discovery** – distributes traffic and auto-detects new Pods  
+- **Declarative Desired State** – you define what you want, Kubernetes ensures reality matches it  
 
----
 
-#### 4. Infrastructure Complexity
+## 🏗️ Kubernetes Cluster Architecture
 
-Managing containers across multiple nodes:
-
-* No centralized control
-* Limited visibility
-* Difficult troubleshooting
-
----
-
-## 💡 Kubernetes Solution
-
-Kubernetes solves these problems through automation and orchestration.
-
-It provides:
-
-* Automated deployment
-* Self-healing systems
-* Horizontal scaling
-* Load balancing
-* Zero-downtime updates
-
----
-
-## 🧠 Core Concept: Declarative Desired State
-
-Kubernetes operates using a declarative model.
-
-You define the desired state of your system, for example:
-
-* Number of replicas
-* Container image
-* Resource limits
-
-Kubernetes continuously ensures that the actual state matches the desired state.
-
----
-
-## 🏗️ Cluster Architecture Overview
-
-![cluster](images/component.png)
-
-A Kubernetes cluster is divided into:
+A Kubernetes cluster is divided into two main parts:
 
 ### 🔹 Control Plane (Cluster Management)
+Responsible for making global decisions about the cluster (e.g., scheduling), detecting and responding to cluster events.
 
-Responsible for making global decisions.
+**Components:**
+- **API Server** – The entry point to the cluster; validates and processes requests.
+- **etcd** – Distributed key-value store that holds the entire cluster state.
+- **Scheduler** – Assigns Pods to appropriate nodes based on resources and constraints.
+- **Controller Manager** – Ensures the system matches the desired state. For example, if a Pod fails, it recreates it automatically.
+
 ### 🔹 Worker Nodes (Workload Execution)
-
 Responsible for running application containers.
 
----
-
-## ⚙️ Control Plane Components
-
-
-
-### API Server
-
-* Entry point to the cluster
-* Validates and processes requests
-
----
-
-### etcd
-
-* Distributed key-value store
-* Holds the entire cluster state
-
----
-
-### Scheduler
-
-* Assigns Pods to appropriate nodes
-* Based on available resources and constraints
-
----
-
-### Controller Manager
-
-* Ensures system consistency
-* Maintains the desired state
-
-Example:
-If a Pod fails → it recreates it automatically
-
----
-
-## 🖥️ Worker Node Components
-
-
-### Kubelet
-
-* Node agent
-* Communicates with Control Plane
-* Ensures containers are running correctly
-
----
-
-### Container Runtime
-
-* Responsible for running containers
-* Examples: containerd, Docker
-
----
-
-### Kube Proxy
-
-* Handles networking rules
-* Enables communication between Pods
-
----
-![cluster](components.png)
-
-
-## 📦 Core Kubernetes Objects
-
-
-
-### Pod
-
-* Smallest deployable unit
-* Contains one or more containers
-
----
-
-### Deployment
-
-* Manages Pods lifecycle
-* Supports scaling and updates
-
----
-
-### Service
-
-* Provides stable network access
-* Enables load balancing
-
----
-
-## 🔄 How Kubernetes Works (Execution Flow)
-
-
-1. Define desired state in YAML
-2. Submit configuration using kubectl
-3. API Server validates request
-4. Scheduler selects target node
-5. Kubelet starts containers
-6. Controllers continuously monitor system
-7. Services expose applications
-
----
-
-## 🧪 Hands-on Labs
-
-This repository includes structured labs covering:
-
-* Pods
-* Deployments
-* Services
-* ConfigMaps & Secrets
-* Volumes (PV, PVC)
-* RBAC
-* Networking
-
-Each lab contains:
-
-* Problem statement
-* YAML solution
-* Command references
-
----
-
-## 🎯 Objective
-
-This repository is designed to:
-
-* Build a strong practical understanding of Kubernetes
-* Provide real hands-on experience
-* Simulate real-world DevOps scenarios
-* Prepare for Kubernetes certifications (CKA)
-
----
-
-## 💼 Professional Focus
-
-This project demonstrates:
-
-* Understanding of Kubernetes architecture
-* Ability to design and manage containerized workloads
-* Hands-on experience with real configurations
-* Readiness for production-level environments
-
----
-![cluster](cluster.png)
+**Components:**
+- **Kubelet** – Node agent that communicates with the Control Plane and ensures containers are running correctly.
+- **Container Runtime** – Software responsible for running containers (e.g., Docker, containerd).
+- **Kube-Proxy** – Handles networking rules to enable communication between Pods.
+![cluster](images/cluster.png)
+![components](images/components.png)
