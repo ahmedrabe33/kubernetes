@@ -91,14 +91,13 @@ Kubernetes continuously ensures that the actual state matches the desired state.
 
 ## 🏗️ Cluster Architecture Overview
 
-![Kubernetes Cluster](images/k8s-architecture.png)
+![cluster](images/component.png)
 
 A Kubernetes cluster is divided into:
 
 ### 🔹 Control Plane (Cluster Management)
 
 Responsible for making global decisions.
-![cluster](images/component.png)
 ### 🔹 Worker Nodes (Workload Execution)
 
 Responsible for running application containers.
