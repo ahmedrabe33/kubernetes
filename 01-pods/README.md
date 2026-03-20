@@ -1,5 +1,5 @@
 # Kubernetes Pod Labs
-![pod](images/pod.png)
+![pod](images/multi.png)
 
 This directory contains practical **Kubernetes Pod labs** for learning and experimentation.  
 These labs cover **basic Pods, multi-container Pods, environment variables, resource limits, volumes, and init containers**.
@@ -33,4 +33,3 @@ kubectl get pods                          # List Pods
 kubectl describe pod lab1-pod             # See Pod details
 kubectl exec -it lab1-pod -- /bin/bash   # Enter Pod shell
 kubectl port-forward pod/lab1-pod 8080:80 # Access Pod in browser (http://localhost:8080)
-![multi](images/multi.png)
