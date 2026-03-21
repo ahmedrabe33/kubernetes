@@ -49,7 +49,7 @@ Kubernetes **Services** provide a stable way to access **Pods** in a cluster. Si
 
 ---
 
-![service-type](../images/service.png)
+![svc-type](../images/service.png)
 Lab 1: ClusterIP Service
 
 In this lab we deploy an NGINX application and expose it internally using a ClusterIP Service.
