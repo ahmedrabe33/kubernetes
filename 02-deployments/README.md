@@ -44,7 +44,7 @@ In this lab, we will:
 
 1. Create a Deployment with **6 Nginx Pods**.
 2. Apply the **RollingUpdate strategy** with:
-   - `maxSurge: 1` → Up to 1 extra Pod created during updates.
+   - `maxSurge: 2` → Up to 1 extra Pod created during updates.
    - `maxUnavailable: 1` → Maximum 1 Pod can be unavailable during updates.
 3. Observe how Kubernetes updates Pods gradually.
 4. Practice scaling the Deployment up and down.
@@ -58,7 +58,7 @@ In this lab, we will:
 **Explanation:**
 
 - **Current Pods:** 6 Pods running before update.
-- **Updating Pods:** New Pods are added gradually (`maxSurge=1`) while some Pods may be unavailable (`maxUnavailable=1`).
+- **Updating Pods:** New Pods are added gradually (`maxSurge=2`) while some Pods may be unavailable (`maxUnavailable=1`).
 - **Final State:** All Pods updated to the new version.
 
 ```text
@@ -135,6 +135,6 @@ kubectl rollout history deployment/nginx-deploy --revision=1
 ## Notes:
 - The Deployment uses 6 replicas.
 - RollingUpdate strategy:
-  - maxSurge: 1
+  - maxSurge: 2
   - maxUnavailable: 1
 - All commands above are used to create, update, scale, simulate failure, rollback, and monitor the Deployment.
