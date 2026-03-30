@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: master-pod
+spec:
+  containers: 
+    - name: nginx
+      image: nginx
+  nodeSelector:
+    role: master
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker-pod
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+  nodeSelector:
+    role: worker
