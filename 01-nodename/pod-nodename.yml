@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-node01
+spec:
+  nodeName: node01
+  containers:
+    - name: nginx
+      image: nginx
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-controlplane
+spec:
+  nodeName: controlplane
+  containers:
+    - name: nginx
+      image: nginx
