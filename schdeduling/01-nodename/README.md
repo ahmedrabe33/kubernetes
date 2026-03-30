@@ -42,4 +42,4 @@ kubectl apply -f nginx-nodename.yaml
 ### 1. verfiy pod placement
 kubectl get pod -o wide
 # expect output
-![nodename](./images/nodename.png)
+![nodename](./../../images/nodename.png)
